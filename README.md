@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+[![Build Status](https://travis-ci.org/MoYummy/vue-sample.svg?branch=dev)](https://travis-ci.org/MoYummy/vue-sample)
+
 ~~~
 npm_config_strict_ssl=false vue init webpack vue-sample
 

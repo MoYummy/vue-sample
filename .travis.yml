@@ -21,4 +21,4 @@ script:
 after_success:
 - cat $TRAVIS_BUILD_DIR/logs/*.log
 - sudo rm -f $TRAVIS_BUILD_DIR/logs/*.log
-- if [ "$TRAVIS_BRANCH" == "master" ]; then echo "commit on master"; fi
+- if [ "$TRAVIS_BRANCH" == "dev" ]; then echo "commit on dev"; fi

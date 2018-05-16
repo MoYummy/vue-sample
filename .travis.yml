@@ -4,7 +4,7 @@ dist: trusty
 language: node_js
 
 services:
-  - docker
+- docker
 
 env:
   DOCKER_COMPOSE_VERSION: 1.4.2
@@ -19,6 +19,18 @@ script:
 - docker-compose -f docker-compose.test.yml up --abort-on-container-exit
 
 after_success:
+- docker-compose -f docker-compose.production.yml up
 - cat $TRAVIS_BUILD_DIR/logs/*.log
 - sudo rm -f $TRAVIS_BUILD_DIR/logs/*.log
 - if [ "$TRAVIS_BRANCH" == "dev" ]; then echo "commit on dev"; fi
+
+deploy:
+  provider: pages
+  github-token: $GITHUB_TOKEN
+  local-dir: dist
+  target-branch: gh-pages
+  skip-cleanup: true
+  keep-history: false
+  verbose: true
+  on:
+    branch: dev

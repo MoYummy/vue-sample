@@ -1,0 +1,13 @@
+version: '2'
+services:
+  karma-test:
+    container_name: karma-test
+    build:
+      context: .
+      dockerfile: Dockerfile-test
+    volumes:
+      - .:/karma-test
+      - /karma-test/node_modules/
+    working_dir: /karma-test
+    command: /bin/sh -c "npm run build"
+
